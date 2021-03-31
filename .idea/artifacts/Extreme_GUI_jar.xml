@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Extreme-GUI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Extreme_GUI_jar</output-path>
+    <root id="archive" name="Extreme-GUI.jar">
+      <element id="module-output" name="Extreme-GUI" />
+    </root>
+  </artifact>
+</component>
