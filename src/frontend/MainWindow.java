@@ -168,7 +168,7 @@ public class MainWindow {
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setFontSize(attributeSet, 15);
-        StyleConstants.setForeground(attributeSet, Color.GREEN);
+        StyleConstants.setForeground(attributeSet, Color.decode("#0A6135"));
         Document doc = chatPane.getStyledDocument();
         try{
             int offset = doc.getLength();
