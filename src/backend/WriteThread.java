@@ -53,7 +53,7 @@ public class WriteThread extends Thread {
                         String encMsg = Crypto.encrypt(text, client.getCurrentSecret());
                         writer.println(encMsg);
                         window.cleanMsgField();
-                        window.writeChat("(you):" + text);
+                        window.writeChatYou(text);
                     }
                 }
             });

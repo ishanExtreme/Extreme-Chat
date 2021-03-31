@@ -52,6 +52,8 @@ public class Client extends Thread {
     public void init() {
 
         window.setCodeField(this.secret);
+        window.setIdField(this.id);
+
         try {
             InetAddress address = InetAddress.getByName(hostname);
             socket = new Socket(address, port);

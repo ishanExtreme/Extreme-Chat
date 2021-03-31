@@ -4,6 +4,10 @@ import backend.Client;
 import backend.Server;
 
 import javax.swing.*;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.Socket;
@@ -16,7 +20,7 @@ public class MainWindow {
     private JRadioButton serverToogle;
     private JTextArea serverText;
     private JTextArea clientText;
-    private JTextArea chatText;
+    private JTextPane chatPane;
     private JTextField codeField;
     private JPanel codePanel;
     private JButton addCode;
@@ -24,6 +28,7 @@ public class MainWindow {
     private JPanel sendPanel;
     public JButton sendButton;
     private JRadioButton clientToogle;
+    private JTextField idField;
     private Server server;
     private Client client;
     private MainWindow window;
@@ -138,9 +143,43 @@ public class MainWindow {
         serverText.append(text+"\n");
     }
 
-    public void writeChat(String text)
+    public void writeChatOther(String username, String text)
     {
-        chatText.append(text+"\n");
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+        StyleConstants.setBold(attributeSet, true);
+        StyleConstants.setFontSize(attributeSet, 15);
+        StyleConstants.setForeground(attributeSet, Color.BLUE);
+        StyleConstants.setBackground(attributeSet, Color.YELLOW);
+        Document doc = chatPane.getStyledDocument();
+        try {
+            doc.insertString(doc.getLength(), "->("+username+"):", attributeSet);
+            StyleConstants.setBackground(attributeSet, Color.WHITE);
+            doc.insertString(doc.getLength(), text+"\n", attributeSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
+
+    }
+
+    public void writeChatYou(String text)
+    {
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+        StyleConstants.setBold(attributeSet, true);
+        StyleConstants.setFontSize(attributeSet, 15);
+        StyleConstants.setForeground(attributeSet, Color.GREEN);
+        Document doc = chatPane.getStyledDocument();
+        try{
+            int offset = doc.getLength();
+            String msg = text+"\n";
+            doc.insertString(doc.getLength(),msg, attributeSet);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.toString());
+        }
     }
 
     public void writeClient(String text)
@@ -167,6 +206,11 @@ public class MainWindow {
     public void setCodeField(String code)
     {
         codeField.setText(code);
+    }
+
+    public void setIdField(String id)
+    {
+        idField.setText(id);
     }
 
 }

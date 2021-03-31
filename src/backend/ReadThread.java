@@ -53,8 +53,8 @@ public class ReadThread extends Thread {
                         else
                             decMsg = encMsg;
                         // decoded message
-                        String message = "->(" + userName + "):" + decMsg;
-                        window.writeChat(message);
+//                        String message = "->(" + userName + "):" + decMsg;
+                        window.writeChatOther(userName, decMsg);
                     }
                 } else {
                     // server messages
