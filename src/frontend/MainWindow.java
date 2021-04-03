@@ -29,6 +29,7 @@ public class MainWindow {
     public JButton sendButton;
     private JRadioButton clientToogle;
     private JTextField idField;
+    private JLabel image;
     private Server server;
     private Client client;
     private MainWindow window;
@@ -78,8 +79,6 @@ public class MainWindow {
             public void actionPerformed(ActionEvent actionEvent) {
                 if(clientToogle.isSelected())
                 {
-                    sendButton.setEnabled(true);
-                    addCode.setEnabled(true);
                     ClientDialog clientDialog = new ClientDialog();
                     clientDialog.setSize(300,200);
                     clientDialog.setLocationRelativeTo(null);
@@ -88,6 +87,8 @@ public class MainWindow {
 
                     if(clientDialog.getCancelStatus()==false)
                     {
+                        sendButton.setEnabled(true);
+                        addCode.setEnabled(true);
                         String hostName = clientDialog.getHostName();
                         int portNumber = clientDialog.getPortNumber();
                         String secret = clientDialog.getSecretCode();
@@ -104,6 +105,8 @@ public class MainWindow {
                 {
                     sendButton.setEnabled(false);
                     addCode.setEnabled(false);
+                    setCodeField("");
+                    setIdField("");
 //                    client.close();
                 }
             }
@@ -171,9 +174,7 @@ public class MainWindow {
         StyleConstants.setForeground(attributeSet, Color.decode("#0A6135"));
         Document doc = chatPane.getStyledDocument();
         try{
-            int offset = doc.getLength();
-            String msg = text+"\n";
-            doc.insertString(doc.getLength(),msg, attributeSet);
+            doc.insertString(doc.getLength(),text+"\n", attributeSet);
 
         }
         catch (Exception e)
