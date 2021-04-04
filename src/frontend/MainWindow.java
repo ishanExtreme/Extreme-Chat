@@ -2,6 +2,8 @@ package frontend;
 
 import backend.Client;
 import backend.Server;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import javax.swing.text.Document;
@@ -10,7 +12,11 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainWindow {
     public JPanel mainPanel;
@@ -30,12 +36,20 @@ public class MainWindow {
     private JRadioButton clientToogle;
     private JTextField idField;
     private JLabel image;
+    private JButton saveButton;
+    private JButton clearButton;
     private Server server;
     private Client client;
     private MainWindow window;
+    private JSONObject message;
+    private JSONArray currentClientMsg;
+    private JSONArray otherClientMsg;
 
     public MainWindow() {
         window = this;
+        message = new JSONObject();
+        currentClientMsg = new JSONArray();
+        otherClientMsg = new JSONArray();
         serverToogle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -89,6 +103,8 @@ public class MainWindow {
                     {
                         sendButton.setEnabled(true);
                         addCode.setEnabled(true);
+                        clearButton.setEnabled(true);
+                        saveButton.setEnabled(true);
                         String hostName = clientDialog.getHostName();
                         int portNumber = clientDialog.getPortNumber();
                         String secret = clientDialog.getSecretCode();
@@ -105,6 +121,8 @@ public class MainWindow {
                 {
                     sendButton.setEnabled(false);
                     addCode.setEnabled(false);
+                    clearButton.setEnabled(false);
+                    saveButton.setEnabled(false);
                     setCodeField("");
                     setIdField("");
 //                    client.close();
@@ -128,6 +146,48 @@ public class MainWindow {
                 }
             }
         });
+        // clear chat panel
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                clearChat();
+                clearMsgVars();
+            }
+        });
+        // save json file
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try(FileWriter output = new FileWriter(getDate() + ".json");)
+                {
+                    message.put("APP Name", "Extreme-Chat");
+                    message.put("APP Version", "V1.0");
+                    message.put("Your Message", currentClientMsg);
+                    message.put("Other's Message", otherClientMsg);
+                    output.write(message.toJSONString());
+                    clearMsgVars();
+                }
+                catch (IOException e)
+                {
+                    System.out.println(e.toString());
+                }
+
+            }
+        });
+    }
+
+    private String getDate()
+    {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        return dateFormat.format(date);
+    }
+
+    private void clearMsgVars()
+    {
+        message = new JSONObject();
+        otherClientMsg = new JSONArray();
+        currentClientMsg = new JSONArray();
     }
 
     public void setServerToogle(boolean set)
@@ -148,6 +208,7 @@ public class MainWindow {
 
     public void writeChatOther(String username, String text)
     {
+        otherClientMsg.add(username+": "+text);
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setFontSize(attributeSet, 15);
@@ -168,6 +229,7 @@ public class MainWindow {
 
     public void writeChatYou(String text)
     {
+        currentClientMsg.add("YOU: "+text);
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setFontSize(attributeSet, 15);
@@ -212,6 +274,11 @@ public class MainWindow {
     public void setIdField(String id)
     {
         idField.setText(id);
+    }
+
+    public void clearChat()
+    {
+        chatPane.setText("");
     }
 
 }

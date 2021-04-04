@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Extreme_GUI_jar</output-path>
     <root id="archive" name="Extreme-GUI.jar">
       <element id="module-output" name="Extreme-GUI" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/Game/json-simple-1.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
