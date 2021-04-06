@@ -9,6 +9,8 @@
 ### Idea:
 In this modern age, everyone is connected through the internet. Facebook, WhatsApp, Instagram, etc... are doing their act of delivering the message from one person to another effectively. But all these fails when it comes to keeping the data private, it’s always on the news that about the user data being leaked. Although this may not be a problem for many users as they consider themself an “Open Book” but few who want to keep their life private wants a better solution to this. From our small project we are trying to  contribute towards this goal.
 
+[Demo Video](https://www.youtube.com/watch?v=Uod64c1blCI)
+
 ### Features:
 * Creat a chat server for group chatting.
 * None of the data is stored in any cloud database.
