@@ -18,7 +18,7 @@ In this modern age, everyone is connected through the internet. Facebook, WhatsA
 * Save button to save the chat data in form of JSON file.
 
 ### How to use?
-**Step-1**: Download the .jar file from [here](https://github.com/ishanExtreme/Extreme-Chat-2/blob/master/setup/V1/Executable.jar).<br>
+**Step-1**: Download the .jar file from [here](https://github.com/ishanExtreme/Extreme-Chat-2/raw/master/setup/V1/Executable.jar).<br>
 **Step-2**: To run the file, JRE must be installed. See the instructions [here](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB)<br>
 **Step-3**: Run the .jar file, (**note to run on linux distros, check *is executable* checkbox in properties of the file under *permissions* tab**)<br>
 **Step-4**: Following screen will appear.
@@ -37,7 +37,7 @@ In this modern age, everyone is connected through the internet. Facebook, WhatsA
 
 * Download and Setup ngrok, [see here](https://ngrok.com/download).
 * Create and connect ngrok account.
-* Run the following command in terminal *`ngrok tcp 3000`*, **replace 3000 with the port number entered while creating server**.
+* Run the following command in terminal `*ngrok tcp 3000*`, **replace 3000 with the port number entered while creating server**.
 * Forwarding link will be used for connecting with server over internet.
 
 <p align="center">
