@@ -18,7 +18,7 @@ In this modern age, everyone is connected through the internet. Facebook, WhatsA
 * Save button to save the chat data in form of JSON file.
 
 ### How to use?
-**Step-1**: Download the .jar file from here.<br>
+**Step-1**: Download the .jar file from [here](https://github.com/ishanExtreme/Extreme-Chat-2/blob/master/setup/V1/Executable.jar).<br>
 **Step-2**: To run the file, JRE must be installed. See the instructions [here](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB)<br>
 **Step-3**: Run the .jar file, (**note to run on linux distros, check *is executable* checkbox in properties of the file under *permissions* tab**)<br>
 **Step-4**: Following screen will appear.
@@ -58,7 +58,7 @@ In this modern age, everyone is connected through the internet. Facebook, WhatsA
 
 **Step-7**: Share the hostname and port of ngrok forwarding link to other users, in order to connect with server(they don't require to turn on the server).
 
-**Step-8**: By this time conversation can be started but the messages will be in encrypter format to decrypt message of a particular user, get his/her secret code and unique Id and enter it by pressing *Add Secrets*.
+**Step-8**: By this time conversation can be started but the messages will be in encrypted format to decrypt message of a particular user, get his/her secret code and unique Id and enter it by pressing *Add Secrets*.
 
 <p align="center">
     <img src="./assets/secret_1.png"/>
@@ -112,7 +112,7 @@ In this modern age, everyone is connected through the internet. Facebook, WhatsA
 
 * Feature to upload chat data to different cloud services and databases(🤔) in just one click.
 * Emoji Section to send emoji.
-* Email button to send secret key via email to other users(Beginner Friendly 🙂).
+* Email button to send secret key via email to other users(Beginner's Friendly 🙂).
 * Feature to change secret code on the fly ✈️.
   
 <br>
