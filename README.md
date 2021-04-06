@@ -37,7 +37,7 @@ In this modern age, everyone is connected through the internet. Facebook, WhatsA
 
 * Download and Setup ngrok, [see here](https://ngrok.com/download).
 * Create and connect ngrok account.
-* Run the following command in terminal `*ngrok tcp 3000*`, **replace 3000 with the port number entered while creating server**.
+* Run the following command in terminal `ngrok tcp 3000`, **replace 3000 with the port number entered while creating server**.
 * Forwarding link will be used for connecting with server over internet.
 
 <p align="center">
